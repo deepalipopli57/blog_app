@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+</head>
+<body>
+    {% if user.is_authenticated %}
+    <p>Hello <b>{{ user.username }}</b> </p>
+        <p>Welcome to django Blogs</p>
+    <p>Check your blogs here</p>
+        <p><p><a href="/blog_details"> <ls>1  What is DevOps and Why You Should Have It</ls></p>
+        <p><a href="/blog_details"> <ls>2  UI Development Flow</ls></a>
+        <p><a href="/blog_details"> <ls>3  Python and Django Beginner's Pack: Books, Tutorials, Newsletters</ls></p>
+        <p><a href="/blog_details"> <ls>4 Asynchronous Programming in Python | Asyncio (Guide)</ls></p>
+        <p><a href="/blog_details"> <ls>5  Django Stars gets 20th Review on Clutch</ls></p>
+        <p><a href="/blog_details"> <ls>6 Django 1.11 Goes Livet</ls></p>
+        <p><a href="/blog_details"> <ls>7  6 Main Outsourcing Risks and Ways to Mitigate Them</ls></p>
+        <p><a href="/blog_details"> <ls>8  Django Performance Optimization Tips</ls></p>
+
+    <p><a href="/logout">Logout</a></p>
+    {% else %}
+    <p><a href="/login">Login</a></p>
+    <p><a href="/register">Register</a></p>
+    {% endif %}
+</body>
+</html>
