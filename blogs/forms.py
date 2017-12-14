@@ -1,5 +1,7 @@
 from django import forms
 
+from blogs.models import BlogsModel
+
 
 class UserRegistrationForm(forms.Form):
     username = forms.CharField(
@@ -18,3 +20,9 @@ class UserRegistrationForm(forms.Form):
         max_length = 32,
         widget = forms.PasswordInput()
     )
+
+
+class Blogs(forms.ModelForm):
+    class Meta:
+        model = BlogsModel
+        fields = ('description', 'image')
