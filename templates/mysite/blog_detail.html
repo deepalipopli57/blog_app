@@ -1,20 +1,22 @@
 {% load static %}
-
+{% block content %}
 
 <form method="post" enctype="multipart/form-data">
 {% csrf_token %}
 
 <p>Username: {{ user.username }} </p>
-
-<p>Blogs: {{ uploaded_file }}</p>
+{% for item in query_results %}
+<p>Blogs: {{ item.description }}</p>
+    {% endfor %}
 <input type="file" name="myfile">
 <button type="submit">Upload</button>
 </form>
 
 {% if uploaded_file_url %}
     <p>File uploaded at: <a href="{{ uploaded_file_url }}">{{ uploaded_file_url }}</a></p>
-     <img src= "{{ uploaded_file_url }}" width="100px" height="200px"/>
+     <img src= "{{ uploaded_file_url }}" width="200px" height="200px"/>
 {% endif %}
 
 <button type="submit">Submit</button>
 <a href="/logout">Logout</a></p>
+{% endblock %}

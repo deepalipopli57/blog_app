@@ -1,20 +1,18 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Home</title>
-</head>
-<body>
+
+{% block content %}
     {% if user.is_authenticated %}
     <p>Hello <b>{{ user.username }}</b> </p>
-        <p>Welcome to django Blogs</p><br>
-    <p>Check your blogs here</p>
-        <p><a href="/blog_detail"> <ol> 1 {{ user.blogs }}</ol></a></p>
 
-    <br>
+    <p>Check your blogs here</p>
+    {% for item in query_results.all %}
+        <p><a href="/blog_detail"> <ol> 1  {{ item.title }}</ol></a></p>
+    {% endfor %}
+    {% if uploaded_file_url %}
+    <img src= "{{ uploaded_file_url }}" width="200px" height="200px"/>
+    {% endif %}
     <p><a href="/logout">Logout</a></p>
     {% else %}
     <p><a href="/login">Login</a></p>
     <p><a href="/register">Register</a></p>
     {% endif %}
-</body>
-</html>
+{% endblock %}

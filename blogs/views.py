@@ -6,12 +6,13 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
 from blogs import forms
-from blogs.forms import UserRegistrationForm, Blogs
+from blogs.forms import UserRegistrationForm
 from blogs.models import BlogsModel
 
 
 def home(request):
-    return render(request, 'mysite/home.html')
+    query_results = BlogsModel.objects.all()
+    return render(request, 'mysite/home.html', {'query_results':query_results})
 
 def register(request):
     if request.method == 'POST':
@@ -34,6 +35,7 @@ def register(request):
     return render(request, 'mysite/register.html', {'form' : form})
 
 def blog_detail(request):
+
     if request.method == 'POST' and request.FILES['myfile']:
         myfile = request.FILES['myfile']
         file = FileSystemStorage()
@@ -43,3 +45,4 @@ def blog_detail(request):
             'uploaded_file_url': uploaded_file_url
         })
     return render(request, 'mysite/blog_detail.html')
+
