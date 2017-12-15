@@ -35,7 +35,7 @@ def register(request):
     return render(request, 'mysite/register.html', {'form' : form})
 
 def blog_detail(request):
-
+    query_result = BlogsModel.objects.all()
     if request.method == 'POST' and request.FILES['myfile']:
         myfile = request.FILES['myfile']
         file = FileSystemStorage()
@@ -44,5 +44,5 @@ def blog_detail(request):
         return render(request, 'mysite/blog_detail.html', {
             'uploaded_file_url': uploaded_file_url
         })
-    return render(request, 'mysite/blog_detail.html')
+    return render(request, 'mysite/blog_detail.html', {'description':query_result})
 

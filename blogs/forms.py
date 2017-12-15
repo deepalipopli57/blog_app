@@ -26,3 +26,12 @@ class Blogs(forms.ModelForm):
     class Meta:
         model = BlogsModel
         fields = ('description', 'image')
+
+
+class BlogsForm(forms.ModelForm):
+    class Meta:
+        model = BlogsModel
+        fields = ['image', 'description', 'title']
+
+    def __str__(self):
+        return self.description

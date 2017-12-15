@@ -9,11 +9,6 @@ class BlogsModel(models.Model):
     description = models.TextField(max_length=255, blank=True)
     image = models.ImageField(upload_to='static', blank=True)
 
-
-class BlogsForm(ModelForm):
-    class Meta:
-        model = BlogsModel
-        fields = ['image', 'description', 'title']
-
     def __str__(self):
-        return self.description
+        return (self.title)
+

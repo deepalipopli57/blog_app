@@ -4,7 +4,7 @@
     <p>Hello <b>{{ user.username }}</b> </p>
 
     <p>Check your blogs here</p>
-    {% for item in query_results.all %}
+    {% for item in query_results %}
         <p><a href="/blog_detail"> <ol> 1  {{ item.title }}</ol></a></p>
     {% endfor %}
     {% if uploaded_file_url %}
